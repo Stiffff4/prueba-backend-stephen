@@ -8,6 +8,7 @@ import {
 import { DatabaseHelper } from '@app/helpers';
 import { Model } from 'mongoose';
 import { Company } from '../database/schemas/companies.schema';
+import { ObjectHelper } from '@app/helpers/object.helper';
 
 @Injectable()
 export class CompaniesService {
@@ -34,7 +35,7 @@ export class CompaniesService {
   }
 
   public async update(id: string, data: UpdateCompanyData): Promise<Company> {
-    const cleanedData = JSON.parse(JSON.stringify(data));
+    const cleanedData = ObjectHelper.clean(data);
 
     const updatedCompany = await this.companiesModel.findByIdAndUpdate(
       id,
