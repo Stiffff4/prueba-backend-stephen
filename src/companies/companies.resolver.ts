@@ -3,7 +3,11 @@ import {
   CreateCompanyOutput,
   GetCompaniesOutput,
 } from '@app/output/companies.output';
-import { CreateCompanyInput, GetCompanyByIdInput } from '@app/input';
+import {
+  CreateCompanyInput,
+  GetCompanyByIdInput,
+  UpdateCompanyInput,
+} from '@app/input';
 import { Company } from '../database/schemas/companies.schema';
 import { CompaniesService } from './companies.service';
 
@@ -28,6 +32,13 @@ export class CompaniesResolver {
     @Args('input') input: CreateCompanyInput,
   ): Promise<Company> {
     return this.companiesService.create(input);
+  }
+
+  @Mutation(() => CreateCompanyOutput)
+  public async update(
+    @Args('input') { id, data }: UpdateCompanyInput,
+  ): Promise<Company> {
+    return this.companiesService.update(id, data);
   }
 
   @Mutation(() => CreateCompanyOutput)

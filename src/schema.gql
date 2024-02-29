@@ -39,6 +39,7 @@ input GetCompanyByIdInput {
 
 type Mutation {
   create(input: CreateCompanyInput!): CreateCompanyOutput!
+  update(input: UpdateCompanyInput!): CreateCompanyOutput!
   delete(input: GetCompanyByIdInput!): CreateCompanyOutput!
 }
 
@@ -52,4 +53,21 @@ input CreateCompanyInput {
   foundingDate: String!
   products: [String!]!
   websiteUrl: String!
+}
+
+input UpdateCompanyInput {
+  id: String!
+  data: UpdateCompanyData!
+}
+
+input UpdateCompanyData {
+  name: String
+  industrySector: String
+  country: String
+  city: String
+  numberOfEmployees: Int
+  annualRevenue: Int
+  foundingDate: Int
+  products: [String!]
+  websiteUrl: String
 }

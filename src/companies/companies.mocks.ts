@@ -21,15 +21,7 @@ export class CompaniesMocks {
 
   public static mockCompany: Company = {
     id: 'Mocked-id',
-    name: 'Mocked-name',
-    industrySector: 'Mocked-industrySector',
-    country: 'Mocked-country',
-    city: 'Mocked-city',
-    numberOfEmployees: 1,
-    annualRevenue: 1,
-    foundingDate: '2024-01-01',
-    products: ['Mocked-product-1, Mocked-product-2, Mocked-product-3'],
-    websiteUrl: 'mockedwebsite.com',
+    ...this._mockCompany,
   };
 
   public static mockCreateInput: CreateCompanyInput = {

@@ -12,6 +12,7 @@ const mockModel = {
   findByIdAndDelete: jest.fn(),
   save: jest.fn(),
   create: jest.fn(),
+  findByIdAndUpdate: jest.fn(),
 };
 
 describe('CompaniesService', () => {
@@ -92,6 +93,26 @@ describe('CompaniesService', () => {
       const result = await service.create(mockCreateInput);
 
       expect(result).toEqual(_mockCompany);
+    });
+  });
+
+  describe('update', () => {
+    it('should update an existing company', async () => {
+      jest
+        .spyOn(mockModel, 'findByIdAndUpdate')
+        .mockResolvedValue(_mockCompany);
+
+      const result = await service.update(_mockCompany._id, mockCreateInput);
+
+      expect(result).toEqual(_mockCompany);
+    });
+
+    it('should throw NotFoundException if company does not exist', async () => {
+      jest.spyOn(mockModel, 'findByIdAndUpdate').mockResolvedValue(null);
+
+      await expect(
+        service.update(_mockCompany._id, mockCreateInput),
+      ).rejects.toThrow(NotFoundException);
     });
   });
 

@@ -36,7 +36,7 @@ export class CreateCompanyInput {
 }
 
 @InputType()
-export class UpdateCompanyInput {
+export class UpdateCompanyData {
   @Field(() => String, { nullable: true })
   name?: string;
 
@@ -63,4 +63,13 @@ export class UpdateCompanyInput {
 
   @Field(() => String, { nullable: true })
   websiteUrl?: string;
+}
+
+@InputType()
+export class UpdateCompanyInput {
+  @Field(() => String!)
+  id: string;
+
+  @Field(() => UpdateCompanyData)
+  data: UpdateCompanyData;
 }

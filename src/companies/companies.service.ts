@@ -1,6 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { CreateCompanyInput, GetCompanyByIdInput } from '@app/input';
+import {
+  CreateCompanyInput,
+  GetCompanyByIdInput,
+  UpdateCompanyData,
+} from '@app/input';
 import { DatabaseHelper } from '@app/helpers';
 import { Model } from 'mongoose';
 import { Company } from '../database/schemas/companies.schema';
@@ -18,7 +22,7 @@ export class CompaniesService {
   public async getById({ id }: GetCompanyByIdInput): Promise<Company> {
     const company: Company = await this.companiesModel.findById(id).exec();
 
-    DatabaseHelper.recordExists(company);
+    DatabaseHelper.checkIfRecordExists(company);
 
     return company;
   }
@@ -29,12 +33,26 @@ export class CompaniesService {
     return await company.save();
   }
 
+  public async update(id: string, data: UpdateCompanyData): Promise<Company> {
+    const cleanedData = JSON.parse(JSON.stringify(data));
+
+    const updatedCompany = await this.companiesModel.findByIdAndUpdate(
+      id,
+      cleanedData,
+      { new: true },
+    );
+
+    DatabaseHelper.checkIfRecordExists(updatedCompany);
+
+    return updatedCompany;
+  }
+
   public async delete({ id }: GetCompanyByIdInput): Promise<Company> {
     const company: Company = await this.companiesModel
       .findByIdAndDelete(id)
       .exec();
 
-    DatabaseHelper.recordExists(company);
+    DatabaseHelper.checkIfRecordExists(company);
 
     return company;
   }
