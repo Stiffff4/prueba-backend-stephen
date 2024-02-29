@@ -1,0 +1,55 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type GetCompaniesOutput {
+  _id: String!
+  name: String!
+  industrySector: String!
+  country: String!
+  city: String!
+  numberOfEmployees: Int!
+  annualRevenue: Int!
+  foundingDate: String!
+  products: [String!]!
+  websiteUrl: String!
+}
+
+type CreateCompanyOutput {
+  _id: String!
+  name: String!
+  industrySector: String!
+  country: String!
+  city: String!
+  numberOfEmployees: Int!
+  annualRevenue: Int!
+  foundingDate: String!
+  products: [String!]!
+  websiteUrl: String!
+}
+
+type Query {
+  getAll: [GetCompaniesOutput!]!
+  getOne(input: GetCompanyByIdInput!): GetCompaniesOutput!
+}
+
+input GetCompanyByIdInput {
+  id: String!
+}
+
+type Mutation {
+  create(input: CreateCompanyInput!): CreateCompanyOutput!
+  delete(input: GetCompanyByIdInput!): CreateCompanyOutput!
+}
+
+input CreateCompanyInput {
+  name: String!
+  industrySector: String!
+  country: String!
+  city: String!
+  numberOfEmployees: Int!
+  annualRevenue: Int!
+  foundingDate: String!
+  products: [String!]!
+  websiteUrl: String!
+}
