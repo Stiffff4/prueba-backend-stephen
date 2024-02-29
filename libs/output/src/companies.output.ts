@@ -2,19 +2,19 @@ import { Field, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class GetCompaniesOutput {
-  @Field()
+  @Field(() => String)
   _id: string;
 
-  @Field()
+  @Field(() => String)
   name: string;
 
-  @Field()
+  @Field(() => String)
   industrySector: string;
 
-  @Field()
+  @Field(() => String)
   country: string;
 
-  @Field()
+  @Field(() => String)
   city: string;
 
   @Field(() => Int)
@@ -23,31 +23,31 @@ export class GetCompaniesOutput {
   @Field(() => Int)
   annualRevenue: number;
 
-  @Field()
+  @Field(() => String)
   foundingDate: string;
 
   @Field(() => [String])
   products: string[];
 
-  @Field()
+  @Field(() => String)
   websiteUrl: string;
 }
 
 @ObjectType()
 export class CreateCompanyOutput {
-  @Field()
+  @Field(() => String)
   _id: string;
 
-  @Field()
+  @Field(() => String)
   name: string;
 
-  @Field()
+  @Field(() => String)
   industrySector: string;
 
-  @Field()
+  @Field(() => String)
   country: string;
 
-  @Field()
+  @Field(() => String)
   city: string;
 
   @Field(() => Int)
@@ -56,12 +56,12 @@ export class CreateCompanyOutput {
   @Field(() => Int)
   annualRevenue: number;
 
-  @Field()
+  @Field(() => String)
   foundingDate: string;
 
   @Field(() => [String])
   products: string[];
 
-  @Field()
+  @Field(() => String)
   websiteUrl: string;
 }

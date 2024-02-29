@@ -1,17 +1,22 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
+@InputType()
+export class GetCompanyByIdInput {
+  @Field(() => String!)
+  id: string;
+}
 
 @InputType()
 export class CreateCompanyInput {
-  @Field()
+  @Field(() => String)
   name: string;
 
-  @Field()
+  @Field(() => String)
   industrySector: string;
 
-  @Field()
+  @Field(() => String)
   country: string;
 
-  @Field()
+  @Field(() => String)
   city: string;
 
   @Field(() => Int)
@@ -20,18 +25,42 @@ export class CreateCompanyInput {
   @Field(() => Int)
   annualRevenue: number;
 
-  @Field()
+  @Field(() => String)
   foundingDate: string;
 
   @Field(() => [String])
   products: string[];
 
-  @Field()
+  @Field(() => String)
   websiteUrl: string;
 }
 
 @InputType()
-export class GetCompanyByIdInput {
-  @Field(() => String!)
-  id: string;
+export class UpdateCompanyInput {
+  @Field(() => String, { nullable: true })
+  name?: string;
+
+  @Field(() => String, { nullable: true })
+  industrySector?: string;
+
+  @Field(() => String, { nullable: true })
+  country?: string;
+
+  @Field(() => String, { nullable: true })
+  city?: string;
+
+  @Field(() => Int, { nullable: true })
+  numberOfEmployees?: number;
+
+  @Field(() => Int, { nullable: true })
+  annualRevenue?: number;
+
+  @Field(() => Int, { nullable: true })
+  foundingDate?: string;
+
+  @Field(() => [String], { nullable: true })
+  products?: string[];
+
+  @Field(() => String, { nullable: true })
+  websiteUrl?: string;
 }
