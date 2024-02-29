@@ -1,3 +1,3 @@
 APP_PORT=3000
 
-DB_CONNECTION_STRING='mongodb+srv://stiffff:admin@stephen-cluster.nonsfwu.mongodb.net/?retryWrites=true&w=majority&appName=Stephen-Cluster'
+DB_CONNECTION_STRING='YOUR CONNNECTION STRING HERE'
